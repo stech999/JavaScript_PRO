@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <input type="text" id="item-input" placeholder="Введите пункт">
+    <button id="add-button">Добавить</button>
+    <ul id="item-list"></ul>
+    
+    <script>
+        const inputEl = document.getElementById('item-input');
+        const buttonEl = document.getElementById('add-button');
+        const listEl = document.getElementById('item-list');
+
+        // Получаем сохраненный список покупок из LocalStorage
+        let shoppingList = JSON.parse(localStorage.getItem('shoppingList')) || [];
+
+        // Функция для обновления список покупок на странице и сохранения его в LocalStorage
+        const updateShoppingList = () => {
+            // Очищаем список покупок на странице
+            listEl.innerHTML = '';
+
+            // Создаем новые элементы списка для каждого продукта
+            shoppingList.forEach(item => {
+                const listItem = document.createElement('li');
+                listItem.textContent = item;
+                listEl.append(listItem);
+            });
+
+            // Сохраняем обновленный список покупок в LocalStorage
+            localStorage.setItem('shoppingList', JSON.stringify(shoppingList));
+        }
+
+        // Обработчик события для кнопки добавить
+        buttonEl.addEventListener('click', function (e) {
+            const newItem = inputEl.value.trim(); // Метод trim() удаляет пробелы в начале и конце строки
+
+            if (newItem !== '') {
+                // Добавляем новый пункт в список покупок
+                shoppingList.push(newItem);
+                inputEl.value = '';
+                updateShoppingList();
+            }
+        });
+
+        // Обновляем список покупок на странице
+        updateShoppingList();
+
+    </script>
+    
+    <script src="./script.js"></script>
+</body>
+</html>

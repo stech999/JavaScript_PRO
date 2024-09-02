@@ -1,0 +1,30 @@
+.nameProduct {
+    width: 250px;
+    margin-bottom: 10px;
+}
+
+.feedbackProduct {
+    min-width: 250px;
+    min-height: 100px;
+}
+
+.nameStyle {
+    font-size: 20px;
+}
+
+.feedbackStyle {
+    font-size: 20px;
+    padding-bottom: 15px;
+}
+
+.allFeedback {
+    font-size: 30px;
+}
+
+.nameProductStyle {
+    font-size: 25px;
+}
+
+.namefeedbackStyle {
+    font-size: 25px;
+}
